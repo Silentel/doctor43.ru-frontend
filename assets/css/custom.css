@@ -1,21 +1,191 @@
-/* @media (min-width: 1440px) {
-  .container {
-    max-width: 1440px;
-  }
-} */
+html {
+  font-family: 'Bw Surco';
+  font-size: 16px;
+}
+
+.header {
+  @apply text-gray-700 shadow;
+}
+
+.footer {
+  @apply text-gray-700 bg-gray-300;
+}
+
+.container-header {
+  @apply flex flex-col mx-auto px-5 py-2 items-center;
+}
+
+.container-main {
+  @apply px-0 py-2 mx-auto;
+}
+
+.container-footer {
+  @apply flex flex-col mx-auto p-5 items-center;
+}
+
+/* Headings */
+
+h1 {
+  @apply text-gray-900 text-xl text-center font-medium;
+}
+
+h2 {
+  @apply text-gray-900 text-lg text-center font-medium;
+}
+
+/* Buttons */
+
+.btn {
+  @apply text-white py-2 px-4 rounded transition duration-500 ease-in-out;
+}
 
 .btn-primary {
-  @apply text-white bg-primary border-0 py-2 px-4 rounded;
+  @apply bg-primary;
 }
 
 .btn-secondary {
-  @apply text-white bg-secondary border-0 py-1 px-3 rounded;
+  @apply bg-secondary;
 }
 
-/* .btn:hover {
-  @apply hover:opacity-75;
+.btn-error {
+  @apply bg-red-700;
+}
+
+.btn-primary:hover {
+  @apply bg-primary_hover;
+}
+
+.btn-secondary:hover {
+  @apply bg-secondary_hover;
+}
+
+.btn-error:hover {
+  @apply bg-red-800;
+}
+
+.btn:focus {
+  @apply outline-none;
+}
+
+.btn:disabled {
+  @apply bg-gray-500 cursor-not-allowed;
+}
+
+.btn-gray {
+  @apply text-black bg-gray-500;
+}
+
+/* Form inputs */
+
+.input {
+  @apply bg-white rounded border border-gray-400 text-base px-4 py-2 mb-4;
+}
+
+.input:hover {
+  @apply border-green-500;
+}
+
+.input:focus {
+  @apply outline-none border-green-500;
+}
+
+/* .input-tel__label {
+  color: red;
 } */
 
-/* .btn:focus {
-  @apply focus:outline-none;
-} */
+.label {
+  @apply border-secondary rounded-lg px-4 py-1 mx-2 transition duration-500 ease-in-out;
+}
+
+.label:hover {
+  @apply bg-secondary text-white;
+}
+
+.radio:checked + label{
+  @apply bg-secondary text-white;
+}
+
+.select {
+  @apply block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-2 px-2 pr-4 rounded leading-tight;
+}
+
+.select:focus {
+  @apply outline-none bg-white border-gray-500;
+}
+
+/* Tabs */
+
+.tab {
+  @apply bg-white inline-block border-b-0 py-2 text-primary font-semibold;
+}
+
+.tab:hover {
+  @apply text-primary_hover;
+}
+
+/* vue-datetime */
+
+.theme .vdatetime-popup__header,
+.theme .vdatetime-calendar__month__day--selected > span > span,
+.theme .vdatetime-calendar__month__day--selected:hover > span > span {
+  @apply bg-primary;
+}
+
+.theme .vdatetime-year-picker__item--selected,
+.theme .vdatetime-time-picker__item--selected,
+.theme .vdatetime-popup__actions__button {
+  @apply text-primary;
+}
+
+/* Calendar */
+
+.fc-event {
+  @apply cursor-pointer;
+}
+
+.fc-toolbar-title {
+  @apply text-base !important;
+}
+
+.fc-toolbar.fc-header-toolbar {
+  @apply mb-2 !important;
+}
+
+.fc-prev-button,
+.fc-next-button {
+  @apply text-black bg-white border-0 !important;
+}
+
+.fc-prev-button:hover,
+.fc-next-button:hover {
+  @apply bg-gray-300 !important;
+}
+
+.fc-prev-button:focus,
+.fc-next-button:focus {
+  @apply shadow-none !important;
+}
+
+/* Media */
+
+@screen md {
+  .container-header {
+    @apply flex-row;
+  }
+
+  .container-main {
+    @apply px-5;
+  }
+
+  .container-footer {
+    @apply flex-row;
+  }
+
+  .tab {
+    @apply px-4;
+  }
+
+  .fc-toolbar-title {
+    @apply text-xl !important;
+  }
+}

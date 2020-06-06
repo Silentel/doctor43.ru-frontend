@@ -3,6 +3,12 @@ export default {
   /*
    ** Headers of the page
    */
+  /*
+   ** Routers for gh-pages
+   */
+  // router: {
+  //   base: '/doctor43.ru-frontend/'
+  // },
   head: {
     htmlAttrs: {
       lang: 'ru'
@@ -30,7 +36,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['~plugins/vue-js-modal'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -44,6 +50,7 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
+    '@nuxtjs/toast',
     [
       'nuxt-fontawesome',
       {

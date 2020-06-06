@@ -6,17 +6,26 @@ module.exports = {
       lg: '1024px',
       xl: '1440px'
     },
+    fontSize: {
+      xxs: '.625rem',
+      xs: '.75rem',
+      sm: '.875rem',
+      base: '1rem',
+      lg: '1.125rem',
+      xl: '1.25rem'
+    },
     extend: {
       colors: {
-        primary: '#f58220',
-        secondary: '#00a651'
+        primary: '#ef7f1a',
+        primary_hover: '#ed5e04',
+        secondary: '#057436',
+        secondary_hover: '#019248'
       }
     }
   },
   variants: {},
   plugins: [],
   purge: {
-    // Learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css
     enabled: process.env.NODE_ENV === 'production',
     content: [
       'components/**/*.vue',

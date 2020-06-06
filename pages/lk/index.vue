@@ -1,12 +1,14 @@
 <template>
   <div>
-    Подключение
+    <h2 class="md:mb-5">
+      Главная
+    </h2>
   </div>
 </template>
 
 <script>
 export default {
-  layout: 'doctor'
+  layout: 'lk'
 }
 </script>
 
