@@ -1,6 +1,7 @@
 html {
   font-family: 'Bw Surco';
   font-size: 16px;
+  @apply overflow-y-scroll;
 }
 
 .header {
