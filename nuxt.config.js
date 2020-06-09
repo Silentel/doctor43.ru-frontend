@@ -6,9 +6,9 @@ export default {
   /*
    ** Routers for gh-pages
    */
-  router: {
-    base: '/doctor43.ru-frontend/'
-  },
+  // router: {
+  //   base: '/doctor43.ru-frontend/'
+  // },
   head: {
     htmlAttrs: {
       lang: 'ru'
