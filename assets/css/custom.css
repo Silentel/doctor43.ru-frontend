@@ -34,6 +34,12 @@ h2 {
   @apply text-gray-900 text-lg text-center font-medium;
 }
 
+/* Nav */
+
+.nav-link {
+  @apply flex items-center rounded p-2 mb-1 text-lg;
+}
+
 /* Buttons */
 
 .btn {
@@ -74,6 +80,10 @@ h2 {
 
 .btn-gray {
   @apply text-black bg-gray-500;
+}
+
+.btn-small {
+  @apply text-white p-1 rounded transition duration-500 ease-in-out;
 }
 
 /* Form inputs */
@@ -165,6 +175,16 @@ h2 {
 .fc-prev-button:focus,
 .fc-next-button:focus {
   @apply shadow-none !important;
+}
+
+/* Transitions */
+
+.page-enter-active, .page-leave-active {
+  transition: opacity .2s;
+}
+
+.page-enter, .page-leave-active {
+  opacity: 0;
 }
 
 /* Media */

@@ -12,18 +12,18 @@
       :options="calendarOptions"
     >
       <template v-slot:eventContent="arg">
-        <div v-if="arg.event.title" class="flex flex-col">
+        <div class="flex flex-col">
           <div class="flex px-1 pt-1 items-center">
             <font-awesome-icon :icon="arg.event.extendedProps.icon" />
             <b class="ml-2">{{ arg.timeText }}</b>
-            <div class="ml-auto">
-              <font-awesome-icon icon="ellipsis-v" @click="showEvent" />
-            </div>
+            <!-- <div class="ml-auto">
+              <font-awesome-icon icon="ellipsis-v" @click="showEventSettings" />
+            </div> -->
           </div>
-          <div>
+          <!-- <div>
             {{ arg.event.extendedProps.branch }}
             {{ arg.event.extendedProps.place }}
-          </div>
+          </div> -->
         </div>
       </template>
     </FullCalendar>
@@ -90,6 +90,64 @@
         </div>
       </div>
     </modal>
+    <modal name="event" :width="400" height="auto" :adaptive="true">
+      <div class="flex flex-col w-full h-full p-2 text-xs md:text-base">
+        <div class="flex">
+          <span class="font-medium mb-8">Информация о событии</span>
+          <font-awesome-icon
+            class="cursor-pointer ml-auto"
+            icon="times"
+            @click="hideEvent"
+          />
+        </div>
+        <div class="flex justify-between font-medium">
+          <div class="px-2">17 июня 11:30-12:30</div>
+          <div class="flex items-center px-2">
+            <font-awesome-icon icon="video" class="mr-2" />
+            Видеоконференция
+          </div>
+          <div class="px-2">Цена не указана</div>
+        </div>
+        <hr class="py-2" />
+        <div class="flex justify-between mb-4">
+          <div class="flex flex-col px-2">
+            <span>Лайт пер. Гостиный, д.5/1</span>
+            <i>Консультация терапевта</i>
+          </div>
+          <div class="flex flex-col px-2">
+            <span>Терентьев Алексей Евгеньевич</span>
+            <span>17.11.1992</span>
+          </div>
+          <div></div>
+          <div class="flex flex-col justify-center px-2">
+            <button class="btn-small btn-secondary mb-2">
+              <font-awesome-icon icon="comments" />
+              Написать
+            </button>
+            <button class="btn-small btn-secondary">
+              <font-awesome-icon icon="phone" />
+              Позвонить
+            </button>
+          </div>
+        </div>
+        <div class="text-primary mb-4">
+          Ожидает подтверждения
+        </div>
+        <div class="flex items-center justify-between">
+          <div>
+            <button class="btn btn-error w-full mb-2" @click="removeEvent">
+              Отменить
+            </button>
+            <button class="btn btn-secondary w-full mb-2" @click="saveEvent">
+              Подтвердить
+            </button>
+            <button class="btn btn-primary w-full" @click="saveEvent">
+              Перейти к приему
+            </button>
+          </div>
+        </div>
+      </div>
+    </modal>
     <modal
       name="event-settings"
       :width="300"
@@ -103,7 +161,7 @@
           <font-awesome-icon
             class="cursor-pointer ml-auto"
             icon="times"
-            @click="hideEvent"
+            @click="hideEventSettings"
           />
         </div>
         <div class="flex flex-col justify-between">
@@ -324,7 +382,8 @@ export default {
         ],
         locale: ruLocale,
         // themeSystem: 'bootstrap',
-        contentHeight: 'auto',
+        // contentHeight: 'auto',
+        height: 615,
         headerToolbar: {
           left: 'prev',
           center: 'title',
@@ -334,7 +393,7 @@ export default {
         rerenderDelay: 500,
         weekends: true,
         allDaySlot: false,
-        slotDuration: '00:30:00',
+        slotDuration: '00:15:00',
         slotMinTime: '07:00',
         slotMaxTime: '20:00',
         slotLabelInterval: '00:30',
@@ -360,8 +419,8 @@ export default {
           {
             id: '1',
             title: 'Консультация',
-            start: '2020-06-03T08:00:00',
-            end: '2020-06-03T09:00:00',
+            start: '2020-06-17T08:00:00',
+            end: '2020-06-17T09:00:00',
             extendedProps: {
               patient_id: '1',
               icon: 'microphone',
@@ -372,8 +431,8 @@ export default {
           {
             id: '2',
             title: '2',
-            start: '2020-06-04T14:00:00',
-            end: '2020-06-04T14:20:00',
+            start: '2020-06-17T14:00:00',
+            end: '2020-06-17T14:20:00',
             extendedProps: {
               patient_id: '1',
               icon: 'video',
@@ -384,8 +443,8 @@ export default {
           {
             id: '3',
             title: '3',
-            start: '2020-06-03T09:00:00',
-            end: '2020-06-03T11:15:00',
+            start: '2020-06-18T09:00:00',
+            end: '2020-06-18T11:15:00',
             extendedProps: {
               patient_id: '1',
               icon: 'clinic-medical',
@@ -396,8 +455,8 @@ export default {
           {
             id: '4',
             title: '4',
-            start: '2020-06-03T14:00:00',
-            end: '2020-06-03T15:20:00',
+            start: '2020-06-18T14:00:00',
+            end: '2020-06-18T15:20:00',
             extendedProps: {
               patient_id: '1',
               icon: 'clinic-medical',
@@ -406,7 +465,7 @@ export default {
             }
           }
         ],
-        dateClick: this.handleDateClick,
+        // dateClick: this.handleDateClick,
         eventClick: this.handleEventClick,
         windowResize: this.handleWindowResize
       }
@@ -435,15 +494,21 @@ export default {
       this.calendarKey = this.schedule.start + this.schedule.end
       this.hideSettings()
     },
+    showEvent() {
+      this.$modal.show('event')
+    },
+    hideEvent() {
+      this.$modal.hide('event')
+    },
     beforeOpenEventSettings(event) {
       this.toCard = false
       this.event.start = ''
       this.event.end = ''
     },
-    showEvent() {
+    showEventSettings() {
       this.$modal.show('event-settings')
     },
-    hideEvent() {
+    hideEventSettings() {
       this.$modal.hide('event-settings')
     },
     removeEvent() {
@@ -495,24 +560,25 @@ export default {
       this.showWaitingList()
     },
     handleEventClick(event) {
+      this.showEvent()
       this.selectedEvent = event.event
       const calendarApi = this.$refs.fullCalendar.getApi()
       const ev = calendarApi.getEventById(event.event.id)
       this.event.start = new Date(ev.start).toISOString()
       this.event.end = new Date(ev.end).toISOString()
-      if (this.toCard) {
-        this.toCard = true
-        this.$router.push('/lk/card')
-      }
+      // if (this.toCard) {
+      //   this.toCard = true
+      //   this.$router.push('/lk/card')
+      // }
     },
     handleWindowResize() {
       if (window.innerWidth <= 768) {
         this.calendarOptions.initialView = 'timeGridDay'
-        this.calendarOptions.slotDuration = '00:15:00'
+        // this.calendarOptions.slotDuration = '00:15:00'
         this.calendarKey = window.innerWidth
       } else {
         this.calendarOptions.initialView = 'timeGridWeek'
-        this.calendarOptions.slotDuration = '00:05:00'
+        // this.calendarOptions.slotDuration = '00:15:00'
         this.calendarKey = window.innerWidth
       }
     }

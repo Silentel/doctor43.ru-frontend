@@ -1,5 +1,6 @@
 export const state = () => ({
-  user: null
+  user: null,
+  notifications: 0
 })
 
 export const mutations = {
@@ -10,11 +11,18 @@ export const mutations = {
   clearUser(state) {
     state.user = null
     localStorage.removeItem('user')
+  },
+  setNotifications(state, notifications) {
+    state.notifications = notifications
+    localStorage.setItem('user', notifications)
+  },
+  clearNotifications(state) {
+    state.notifications = 0
   }
 }
 
 export const actions = {
-  login({ commit }, { email, password }) {
+  login({ commit }) {
     try {
       // const users = await axios.get('http://localhost:3000/users')
       // const user = users.data.find((user) => user.login === email)
@@ -36,11 +44,8 @@ export const actions = {
       throw error
     }
   },
-  autoLogin({ commit }, user) {
-    commit('setUser', {
-      id: 'user'
-      // role: user.role
-    })
+  autoLogin({ dispatch }) {
+    dispatch('login')
   },
   logout({ commit }) {
     commit('clearUser')
@@ -49,5 +54,6 @@ export const actions = {
 
 export const getters = {
   user: (state) => state.user,
+  notifications: (state) => state.notifications,
   isAuthenticated: (state) => !!state.user
 }

@@ -14,6 +14,10 @@ module.exports = {
       lg: '1.125rem',
       xl: '1.25rem'
     },
+    inset: {
+      '0': 0,
+      auto: 'auto'
+    },
     extend: {
       colors: {
         primary: '#ef7f1a',

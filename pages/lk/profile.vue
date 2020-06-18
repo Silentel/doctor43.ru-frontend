@@ -37,6 +37,18 @@
           <span class="font-medium">Врач-невролог</span>
         </li>
         <li class="flex items-center justify-between border-b py-2">
+          <span>Место работы</span>
+          <div class="flex">
+            <span class="font-medium">Центральная поликлиника "Лайт"</span>
+            <button
+              class="btn-primary px-2 ml-2 text-white rounded transition duration-500 ease-in-out"
+              @click="$router.push('/lk/jobs')"
+            >
+              <font-awesome-icon icon="plus" />
+            </button>
+          </div>
+        </li>
+        <li class="flex items-center justify-between border-b py-2">
           <span>Пациенты</span>
           <span class="font-medium">Взрослые</span>
         </li>
