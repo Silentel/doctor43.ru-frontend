@@ -1,0 +1,288 @@
+html {
+  font-family: 'Bw Surco';
+  font-size: 16px;
+  @apply overflow-y-scroll;
+}
+
+.header {
+  @apply text-gray-700;
+  @apply shadow;
+}
+
+.footer {
+  @apply text-gray-700;
+  @apply bg-gray-300;
+}
+
+.container-header {
+  @apply flex;
+  @apply flex-col;
+  @apply mx-auto;
+  @apply px-5;
+  @apply py-2;
+  @apply items-center;
+}
+
+.container-main {
+  @apply px-0;
+  @apply py-2;
+  @apply mx-auto;
+}
+
+.container-footer {
+  @apply flex;
+  @apply flex-col;
+  @apply mx-auto;
+  @apply p-5;
+  @apply items-center;
+}
+
+/* Headings */
+
+h1 {
+  @apply text-gray-900;
+  @apply text-xl;
+  @apply text-center;
+  @apply font-medium;
+}
+
+h2 {
+  @apply text-gray-900;
+  @apply text-lg;
+  @apply text-center;
+  @apply font-medium;
+}
+
+/* Nav */
+
+.nav-link {
+  @apply flex;
+  @apply items-center;
+  @apply rounded;
+  @apply p-2;
+  @apply mb-1;
+  @apply text-lg;
+}
+
+/* Buttons */
+
+.btn {
+  @apply text-white;
+  @apply py-2;
+  @apply px-4;
+  @apply rounded;
+  @apply transition;
+  @apply duration-500;
+  @apply ease-in-out;
+}
+
+.btn-primary {
+  @apply bg-primary;
+}
+
+.btn-secondary {
+  @apply bg-secondary;
+}
+
+.btn-error {
+  @apply bg-red-700;
+}
+
+.btn-primary:hover {
+  @apply bg-primary_hover;
+}
+
+.btn-secondary:hover {
+  @apply bg-secondary_hover;
+}
+
+.btn-error:hover {
+  @apply bg-red-800;
+}
+
+.btn:focus {
+  @apply outline-none;
+}
+
+.btn:disabled {
+  @apply bg-gray-500;
+  @apply cursor-not-allowed;
+}
+
+.btn-gray {
+  @apply text-black;
+  @apply bg-gray-500;
+}
+
+.btn-small {
+  @apply text-white;
+  @apply p-1;
+  @apply rounded;
+  @apply transition;
+  @apply duration-500;
+  @apply ease-in-out;
+}
+
+/* Form inputs */
+
+.input {
+  @apply bg-white;
+  @apply rounded;
+  @apply border;
+  @apply border-gray-400;
+  @apply text-base;
+  @apply px-4;
+  @apply py-2;
+  @apply mb-4;
+}
+
+.input:hover {
+  @apply border-green-500;
+}
+
+.input:focus {
+  @apply outline-none;
+  @apply border-green-500;
+}
+
+.label {
+  @apply border-secondary;
+  @apply rounded-lg;
+  @apply px-4;
+  @apply py-1;
+  @apply mx-2;
+  @apply transition;
+  @apply duration-500;
+  @apply ease-in-out;
+}
+
+.label:hover {
+  @apply bg-secondary;
+  @apply text-white;
+}
+
+.radio:checked + label{
+  @apply bg-secondary;
+  @apply text-white;
+}
+
+.select {
+  @apply block;
+  @apply appearance-none;
+  @apply w-full;
+  @apply bg-gray-200;
+  @apply border;
+  @apply border-gray-200;
+  @apply text-gray-700;
+  @apply py-2;
+  @apply px-2;
+  @apply pr-4;
+  @apply rounded;
+  @apply leading-tight;
+}
+
+.select:focus {
+  @apply outline-none;
+  @apply bg-white;
+  @apply border-gray-500;
+}
+
+/* Tabs */
+
+.tab {
+  @apply bg-white;
+  @apply inline-block;
+  @apply border-b-0;
+  @apply py-2;
+  @apply text-primary;
+  @apply font-semibold;
+}
+
+.tab:hover {
+  @apply text-primary_hover;
+}
+
+/* vue-datetime */
+
+.theme .vdatetime-popup__header,
+.theme .vdatetime-calendar__month__day--selected > span > span,
+.theme .vdatetime-calendar__month__day--selected:hover > span > span {
+  @apply bg-primary;
+}
+
+.theme .vdatetime-year-picker__item--selected,
+.theme .vdatetime-time-picker__item--selected,
+.theme .vdatetime-popup__actions__button {
+  @apply text-primary;
+}
+
+/* Calendar */
+
+.fc-event {
+  @apply cursor-pointer;
+}
+
+.fc-toolbar-title {
+  @apply text-base;
+  /* text-base !important; */
+}
+
+.fc-toolbar.fc-header-toolbar {
+  @apply mb-2;
+  /* mb-2 !important; */
+}
+
+.fc-prev-button,
+.fc-next-button {
+  @apply text-black;
+  @apply bg-white;
+  @apply border-0;
+  /* border-0 !important; */
+}
+
+.fc-prev-button:hover,
+.fc-next-button:hover {
+  @apply bg-gray-300;
+  /* bg-gray-300 !important; */
+}
+
+.fc-prev-button:focus,
+.fc-next-button:focus {
+  @apply shadow-none;
+  /* shadow-none !important; */
+}
+
+/* Transitions */
+
+.page-enter-active, .page-leave-active {
+  transition: opacity .2s;
+}
+
+.page-enter, .page-leave-active {
+  opacity: 0;
+}
+
+/* Media */
+
+@screen md {
+  .container-header {
+    @apply flex-row;
+  }
+
+  .container-main {
+    @apply px-5;
+  }
+
+  .container-footer {
+    @apply flex-row;
+  }
+
+  .tab {
+    @apply px-4;
+  }
+
+  .fc-toolbar-title {
+    @apply text-xl;
+    /* text-xl !important; */
+  }
+}

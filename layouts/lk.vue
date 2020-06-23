@@ -6,7 +6,7 @@
           <nuxt-link to="/lk">
             <img class="w-20 md:w-auto" src="~assets/images/logo.png" />
           </nuxt-link>
-          <div v-if="isAuthenticated" class="flex">
+          <div class="flex">
             <div
               class="flex flex-col p-2 text-xs md:text-base rounded shadow-md"
             >
@@ -132,7 +132,6 @@
             </div>
           </div>
           <nav
-            v-if="isAuthenticated"
             class="flex md:hidden cursor-pointer items-center text-base justify-center items-center"
           >
             <nuxt-link
@@ -154,14 +153,6 @@
             <div @click="showMenu">
               <font-awesome-icon icon="bars" size="2x" />
             </div>
-          </nav>
-          <nav
-            v-if="!isAuthenticated"
-            class="flex flex-wrap cursor-pointer items-center text-base justify-center items-center"
-          >
-            <nuxt-link to="/login">
-              <font-awesome-icon icon="sign-out-alt" size="2x" />
-            </nuxt-link>
           </nav>
         </div>
       </div>
@@ -498,10 +489,9 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  // middleware: ['auth'],
+  middleware: ['auth'],
   computed: {
     ...mapGetters({
-      isAuthenticated: 'user/isAuthenticated',
       notifications: 'user/notifications'
     })
   },
@@ -516,7 +506,7 @@ export default {
   },
   methods: {
     logout() {
-      this.$store.dispatch('user/logout')
+      this.$store.dispatch('auth/logout')
     },
     showMenu() {
       this.$modal.show('menu')

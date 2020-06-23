@@ -67,16 +67,17 @@ export default {
       }
     ],
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
-    '@nuxtjs/pwa',
-    // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/axios'
+    // '@nuxtjs/pwa'
   ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: { baseURL: process.env.BASE_URL || 'http://localhost:3000' },
+  axios: {
+    baseURL: 'http://dev.doctor43.ru/api'
+    // credentials: true
+  },
   /*
    ** Build configuration
    */

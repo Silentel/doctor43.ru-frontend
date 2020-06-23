@@ -1,5 +1,6 @@
-// export default function ({ store, redirect }) {
-//   if (!store.getters['user/isAuthenticated']) {
-//     redirect('/login')
-//   }
-// }
+export default function ({ store, redirect }) {
+  store.dispatch('auth/autoLogin')
+  if (!store.getters['auth/isAuthenticated']) {
+    redirect('/login')
+  }
+}

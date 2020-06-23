@@ -11,11 +11,7 @@ export const mutations = {
   }
 }
 
-export const actions = {
-  // nuxtServerInit({ dispatch }) {
-  //   dispatch('user/autoLogin')
-  // }
-}
+export const actions = {}
 
 export const getters = {
   error: (state) => state.error

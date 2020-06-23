@@ -317,9 +317,7 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import bootstrapPlugin from '@fullcalendar/bootstrap'
-// import { toDateTime } from '@fullcalendar/luxon'
 import ruLocale from '@fullcalendar/core/locales/ru'
-// import VueTimepicker from 'vue2-timepicker/src/vue-timepicker.vue'
 import { Datetime } from 'vue-datetime'
 import 'vue-datetime/dist/vue-datetime.css'
 
@@ -327,7 +325,6 @@ export default {
   layout: 'lk',
   components: {
     FullCalendar,
-    // VueTimepicker,
     Datetime
   },
   data() {

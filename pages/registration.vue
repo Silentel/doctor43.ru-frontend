@@ -3,7 +3,7 @@
     <div class="container px-5 py-2 mx-auto flex justify-center items-center">
       <form
         class="bg-gray-300 rounded-lg shadow-md p-2 md:p-8 flex flex-col"
-        @submit.prevent=""
+        @submit.prevent="check"
       >
         <h2 class="mb-5">
           Регистрация
@@ -50,7 +50,7 @@
             @update="getPhone"
           />
         </div>
-        <button class="btn btn-primary text-lg mb-5" @click="check">
+        <button class="btn btn-primary text-lg mb-5">
           Зарегистрироваться
         </button>
         <button class="btn bg-secondary" @click="withPhone = !withPhone">
@@ -111,17 +111,37 @@ export default {
         this.register()
       }
     },
-    register() {
+    async register() {
       if (this.formValid) {
-        this.$toast.success('Регистрация успешно выполнена', {
+        try {
+          const formData = {
+            jsonrpc: '2.0',
+            method: 'registration',
+            params: {
+              email: this.email,
+              password: this.password,
+              full_name: this.fullname
+            }
+          }
+
+          await this.$store.dispatch('auth/register', formData)
+          this.$toast.success('Регистрация успешно выполнена', {
+            position: 'bottom-center',
+            duration: 2000
+          })
+          this.$router.push(`/login`)
+        } catch (error) {
+          this.$toast.error('Ошибка', {
+            position: 'bottom-center',
+            duration: 2000
+          })
+        }
+      } else {
+        this.$toast.error('Невалидная форма', {
           position: 'bottom-center',
           duration: 2000
         })
-        this.$router.push(`/login`)
       }
-      // if (this.formValid) {
-      // this.$router.push(`/${this.picked}`)
-      // }
     }
   }
 }
