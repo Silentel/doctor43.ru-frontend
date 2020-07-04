@@ -1,16 +1,26 @@
-// export default function ({ $axios, redirect }, inject) {
-//   // Create a custom axios instance
-//   const api = $axios.create({
-//     headers: {
-//       common: {
-//         Accept: 'application/json'
-//       }
-//     }
-//   })
+export default function ({ $axios, redirect, store }) {
+  $axios.interceptors.request.use((request) => {
+    if (
+      store.getters['auth/isAuthenticated'] &&
+      !request.headers.common.Authorization
+    ) {
+      const token = store.getters['auth/token']
+      request.headers.common.Authorization = `Bearer ${token}`
+    }
 
-//   // Set baseURL to something different
-//   api.setBaseURL('http://dev.ru')
+    return request
+  })
 
-//   // Inject to context as $api
-//   inject('api', api)
-// }
+  $axios.onError((error) => {
+    if (error.response) {
+      if (error.response.status === 401) {
+        redirect('/login')
+        store.dispatch('auth/logout')
+      }
+
+      if (error.response.status === 500) {
+        console.error('Server 500 error')
+      }
+    }
+  })
+}

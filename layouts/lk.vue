@@ -132,7 +132,7 @@
             </div>
           </div>
           <nav
-            class="flex md:hidden cursor-pointer items-center text-base justify-center items-center"
+            class="flex md:hidden cursor-pointer items-center text-base justify-center"
           >
             <nuxt-link
               class="font-semibold text-gray-600 hover:text-primary mr-4"

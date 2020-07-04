@@ -36,7 +36,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~plugins/vue-js-modal'],
+  plugins: ['~plugins/vue-js-modal', '~plugins/axios'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -75,8 +75,7 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: 'http://dev.doctor43.ru/api'
-    // credentials: true
+    baseURL: 'https://dev.doctor43.ru/api'
   },
   /*
    ** Build configuration

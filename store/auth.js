@@ -24,8 +24,6 @@ export const actions = {
   async login({ commit, dispatch }, formData) {
     try {
       const { access, refresh } = await this.$axios.$post('/token/', formData)
-      console.log('access', access)
-      console.log('refresh', refresh)
       dispatch('setAccessToken', access)
       dispatch('setRefreshToken', refresh)
     } catch (error) {
@@ -47,10 +45,8 @@ export const actions = {
       refresh: `${token}`
     }
 
-    console.log('jsonToken', jsonToken)
     try {
       const { access } = await this.$axios.$post('/token/refresh/', jsonToken)
-      console.log('accessNEW', access)
       dispatch('setAccessToken', access)
     } catch (error) {
       commit('setError', error, { root: true })
@@ -65,7 +61,12 @@ export const actions = {
   },
   async register({ commit }, formData) {
     try {
-      await this.$axios.$post('/doctor/registration/', formData)
+      const { result } = await this.$axios.$post(
+        '/doctor/registration/',
+        formData
+      )
+
+      return result
     } catch (error) {
       commit('setError', error, { root: true })
       throw error

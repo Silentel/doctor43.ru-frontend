@@ -100,10 +100,6 @@ h2 {
   @apply outline-none border-green-500;
 }
 
-/* .input-tel__label {
-  color: red;
-} */
-
 .label {
   @apply border-secondary rounded-lg px-4 py-1 mx-2 transition duration-500 ease-in-out;
 }
@@ -116,12 +112,49 @@ h2 {
   @apply bg-secondary text-white;
 }
 
+/* .checkbox {
+  display: none;
+}
+
+.checkbox-span {
+  height: 12px;
+  width: 12px;
+  border: 1px solid gray;
+  display: inline-block;
+  position: relative;
+  background-color:#FFF;
+  border-radius:2px;
+  padding:3px;
+}
+[type=checkbox]:checked + span:before {
+  content: '\2714';
+  position: absolute;
+  top: -5px;
+  left: 0;
+  font-size:23px;
+  color:green;
+} */
+
 .select {
   @apply block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-2 px-2 pr-4 rounded leading-tight;
 }
 
 .select:focus {
   @apply outline-none bg-white border-gray-500;
+}
+
+/* Toggle */
+
+.toggle__dot {
+  @apply top-0 left-0 transition-all ease-in-out duration-300;
+}
+
+input:checked ~ .toggle__dot {
+  @apply transform translate-x-full !important;
+}
+
+input:checked ~ .toggle__line {
+  @apply bg-secondary !important;
 }
 
 /* Tabs */
@@ -146,6 +179,19 @@ h2 {
 .theme .vdatetime-time-picker__item--selected,
 .theme .vdatetime-popup__actions__button {
   @apply text-primary;
+}
+
+/* vue-phone-number-input */
+
+.input-tel__input,
+.input-tel__label {
+  @apply cursor-text !important;
+}
+
+.input-tel__input::placeholder {
+  font-family: 'Bw Surco';
+  font-size: 16px;
+  @apply text-gray-500 !important;
 }
 
 /* Calendar */
