@@ -22,30 +22,35 @@ export const mutations = {
 }
 
 export const actions = {
-  login({ commit }) {
+  async getMe({ commit }) {
     try {
-      // const users = await axios.get('http://localhost:3000/users')
-      // const user = users.data.find((user) => user.login === email)
-
-      // if (user) {
-      //   if (user.password === password) {
-      commit('setUser', {
-        id: 'user'
-        // role: user.role
+      const { result } = await this.$axios.$post('/doctor/', {
+        jsonrpc: '2.0',
+        method: 'get_me'
       })
-      //   } else {
-      //     commit('setError', 'Неверный пароль')
-      //   }
-      // } else {
-      //   commit('setError', 'Пользователь не найден')
-      // }
+
+      commit('setUser', result)
+
+      console.log(result)
+
+      return result
     } catch (error) {
-      commit('setError', error)
+      commit('setError', error, { root: true })
+      throw error
+    }
+  },
+  async updateInfo({ commit }, formData) {
+    try {
+      const { result } = await this.$axios.$post('/doctor/', formData)
+
+      return result
+    } catch (error) {
+      commit('setError', error, { root: true })
       throw error
     }
   },
   autoLogin({ dispatch }) {
-    dispatch('login')
+    dispatch('getMe')
   },
   logout({ commit }) {
     commit('clearUser')

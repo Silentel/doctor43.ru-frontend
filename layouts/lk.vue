@@ -26,7 +26,9 @@
             </div>
             <div class="hidden md:flex ml-2 p-2 items-center rounded shadow-md">
               <div class="flex flex-col px-1">
-                <span class="font-medium">Сычёва Ольга Алексеевна</span>
+                <span v-if="user" class="font-medium">{{
+                  user.full_name
+                }}</span>
                 <span class="text-xs text-primary">
                   Врач-невролог
                 </span>
@@ -62,6 +64,18 @@
                     v-if="notifications !== 0"
                     class="absolute top-1 right-0 p-2 rounded-lg shadow-md bg-white z-10 hidden group-hover:block"
                   >
+                    <li
+                      class="bg-gray-200 px-2 whitespace-no-wrap text-sm md:text-base text-gray-600 hover:text-gray-800 hover:bg-gray-300"
+                    >
+                      <font-awesome-icon
+                        class="text-primary"
+                        icon="exclamation-triangle"
+                      />
+                      <span class="ml-2 text-primary"
+                        >Подтвердите свой email</span
+                      >
+                    </li>
+
                     <nuxt-link to="/lk">
                       <li
                         class="bg-gray-200 px-2 whitespace-no-wrap text-sm md:text-base text-gray-600 hover:text-gray-800 hover:bg-gray-300"
@@ -492,6 +506,7 @@ export default {
   middleware: ['auth'],
   computed: {
     ...mapGetters({
+      user: 'user/user',
       notifications: 'user/notifications'
     })
   },

@@ -5,6 +5,13 @@
     </h2>
     <div class="flex">
       <ul class="w-full leading-loose">
+        <li
+          class="bg-white px-2 whitespace-no-wrap text-sm md:text-base text-gray-600 hover:text-gray-800 hover:bg-gray-300"
+          :class="{ 'bg-gray-200': notifications > 0 }"
+        >
+          <font-awesome-icon class="text-primary" icon="exclamation-triangle" />
+          <span class="ml-2 text-primary">Подтвердите свой email</span>
+        </li>
         <nuxt-link to="/lk/card">
           <li
             class="bg-white px-2 whitespace-no-wrap text-sm md:text-base text-gray-600 hover:text-gray-800 hover:bg-gray-300"

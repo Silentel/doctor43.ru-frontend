@@ -116,6 +116,7 @@ export default {
               }
 
               await this.$store.dispatch('auth/login', formData)
+              await this.$store.dispatch('user/getMe')
 
               this.$toast.success('Вход успешно выполнен', {
                 position: 'bottom-center',
