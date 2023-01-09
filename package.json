@@ -30,7 +30,7 @@
     "cookie": "^0.4.1",
     "js-cookie": "^2.2.1",
     "jwt-decode": "^2.2.0",
-    "luxon": "^1.24.1",
+    "luxon": "^2.5.2",
     "nuxt": "^2.13.3",
     "nuxt-fontawesome": "^0.4.0",
     "vue-datetime": "^1.0.0-beta.13",
